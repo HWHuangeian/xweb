@@ -1,5 +1,6 @@
 package com.huangweihan.xweb.controller;
 
+import com.huangweihan.xweb.core.constant.CommonConstant;
 import com.huangweihan.xweb.core.pojo.Result;
 import com.huangweihan.xweb.core.utils.ResultUtil;
 import com.huangweihan.xweb.entity.User;
@@ -28,7 +29,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping("/login")
     public Result<User> hello() {
-        log.info("[Entering method] | hello() {}", "coming");
+        log.info(CommonConstant.ENTERING_METHOD + "UserController.hello {}", "coming");
         User user = userService.login();
         return new ResultUtil<User>().setData(user);
     }
