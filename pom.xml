@@ -24,6 +24,7 @@
     <mybatis-spring.version>1.3.1</mybatis-spring.version>
     <mysql.version>5.1.38</mysql.version>
     <jstl.version>1.2</jstl.version>
+    <druid.version>1.1.10</druid.version>
   </properties>
 
   <dependencies>
@@ -132,6 +133,11 @@
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
+      <artifactId>spring-aspects</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
       <artifactId>spring-tx</artifactId>
       <version>${spring.version}</version>
     </dependency>
@@ -170,16 +176,11 @@
       <version>${mysql.version}</version>
     </dependency>
 
-    <!--sql-->
+    <!--druid-->
     <dependency>
-      <groupId>com.github.pagehelper</groupId>
-      <artifactId>pagehelper</artifactId>
-      <version>3.7.3</version>
-    </dependency>
-    <dependency>
-      <groupId>com.github.jsqlparser</groupId>
-      <artifactId>jsqlparser</artifactId>
-      <version>0.9.1</version>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>${druid.version}</version>
     </dependency>
 
     <!--jstl-->
@@ -197,8 +198,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
     </plugins>

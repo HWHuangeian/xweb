@@ -21,16 +21,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UserController {
 
-    Logger log = LoggerFactory.getLogger(UserController.class);
+    Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/findUserByUserId")
     @ResponseBody
-    @RequestMapping("/login")
-    public Result<User> hello() {
-        log.info(CommonConstant.ENTERING_METHOD + "UserController.hello {}", "coming");
-        User user = userService.login();
+    public Result<User> findUserByUserId(int userId) {
+        User user = userService.getUserByUserId(userId);
+        logger.info("userId={}, userName={}", user.getUserId(), user.getUserName());
+        return new ResultUtil<User>().setData(user);
+    }
+
+    @RequestMapping("/findUserByUserName")
+    @ResponseBody
+    public Result<User> findUserByUserName(String userName) {
+        User user = userService.getUserByUserName(userName);
+        logger.info("userId={}, userName={}", user.getUserId(), user.getUserName());
         return new ResultUtil<User>().setData(user);
     }
 

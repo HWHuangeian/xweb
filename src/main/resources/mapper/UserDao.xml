@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huangweihan.xweb.dao.UserDao">
+
+	<select id="queryByUserId" resultType="User">
+		SELECT *
+		FROM user
+		WHERE 
+		userId= #{userId} limit 1
+	</select>
+
+	<select id="queryByUserName" resultType="User">
+		SELECT *
+		FROM user
+		WHERE
+		userName= #{userName} limit 1
+	</select>
+
+</mapper>

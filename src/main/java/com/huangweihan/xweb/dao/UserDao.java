@@ -1,4 +1,4 @@
-package com.huangweihan.xweb.service;
+package com.huangweihan.xweb.dao;
 
 import com.huangweihan.xweb.entity.User;
 
@@ -6,9 +6,9 @@ import com.huangweihan.xweb.entity.User;
  * Description
  *
  * @author: Administrator
- * @date: 2018/10/16 0016
+ * @date: 2018/10/17 0017
  */
-public interface UserService {
+public interface UserDao {
 
     /**
      * 根据用户ID查询用户对象
@@ -16,7 +16,7 @@ public interface UserService {
      * @param userId
      * @return
      */
-    User getUserByUserId(int userId);
+    User queryByUserId(int userId);
 
     /**
      * 根据用户名查询用户对象
@@ -24,5 +24,5 @@ public interface UserService {
      * @param userName
      * @return
      */
-    User getUserByUserName(String userName);
+    User queryByUserName(String userName);
 }
