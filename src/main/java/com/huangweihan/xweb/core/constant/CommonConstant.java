@@ -9,4 +9,5 @@ package com.huangweihan.xweb.core.constant;
 public interface CommonConstant {
 
     String ENTERING_METHOD = "[ENTERING METHOD] | ";
+    String LEAVING_METHOD = "[LEAVING_METHOD] | ";
 }
