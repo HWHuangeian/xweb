@@ -1,6 +1,9 @@
 package com.huangweihan.xweb.dao;
 
 import com.huangweihan.xweb.entity.User;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * Description
@@ -27,11 +30,19 @@ public interface UserDao {
     User queryByUserName(String userName);
 
     /**
+     * 查询所有用户
+     *
+     * @return
+     */
+    List<User> queryAllUser();
+
+    /**
      * 新增一个用户
      *
-     * @param userName
+     * @param user
+     * @return
      */
-    void insertOneUser(String userName);
+    void insertOneUser(User user);
 
     /**
      * 根据用户ID删除一个用户
@@ -41,10 +52,15 @@ public interface UserDao {
     void deleteByUserId(int userId);
 
     /**
+     * 删除所有用户
+     */
+    void deleteAllUser();
+
+    /**
      * 更新一个用户的用户信息
      *
      * @param userId
      * @param userName
      */
-    void updateByUserId(int userId, String userName);
+    void updateByUserId(@Param("userId")int userId, @Param("userName")String userName);
 }

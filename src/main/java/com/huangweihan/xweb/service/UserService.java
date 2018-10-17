@@ -2,6 +2,8 @@ package com.huangweihan.xweb.service;
 
 import com.huangweihan.xweb.entity.User;
 
+import java.util.List;
+
 /**
  * Description
  *
@@ -27,9 +29,37 @@ public interface UserService {
     User getUserByUserName(String userName);
 
     /**
+     * 查询所有用户
+     *
+     * @return
+     */
+    List<User> getAllUser();
+
+    /**
      * 新增一个用户
      *
      * @param userName
+     * @return
      */
-    void addOneUser(String userName);
+    Integer addOneUser(String userName);
+
+    /**
+     *  删除一个用户
+     *
+     * @param userId
+     */
+    void deleteByUserId(int userId);
+
+    /**
+     * 删除所有用户
+     */
+    void deleteAllUser();
+
+    /**
+     * 更新一个用户
+     *
+     * @param userId
+     * @param userName
+     */
+    void updateOneUser(int userId, String userName);
 }

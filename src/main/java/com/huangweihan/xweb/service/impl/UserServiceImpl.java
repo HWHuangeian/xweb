@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Description
  *
@@ -25,21 +27,53 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByUserId(int userId) {
+        logger.info("userId={}", userId);
         User user = userDao.queryByUserId(userId);
-        logger.info("userId={}, userName={}", user.getUserId(), user.getUserName());
         return user;
     }
 
     @Override
     public User getUserByUserName(String userName) {
+        logger.info("userName={}", userName);
         User user = userDao.queryByUserName(userName);
-        logger.info("userId={}, userName={}", user.getUserId(), user.getUserName());
         return user;
     }
 
     @Override
-    public void addOneUser(String userName) {
-        logger.info("userName={}", userName);
-        userDao.insertOneUser(userName);
+    public List<User> getAllUser() {
+        List<User> userList = userDao.queryAllUser();
+        return userList;
     }
+
+    @Override
+    public Integer addOneUser(String userName) {
+        logger.info("userName={}", userName);
+        User instance = userDao.queryByUserName(userName);
+        if (instance == null) {
+            User user = new User();
+            user.setUserName(userName);
+            userDao.insertOneUser(user);
+            return user.getUserId();
+        } else {
+            return -1;
+        }
+    }
+
+    @Override
+    public void deleteByUserId(int userId) {
+        logger.info("userId={}", userId);
+        userDao.deleteByUserId(userId);
+    }
+
+    @Override
+    public void deleteAllUser() {
+        userDao.deleteAllUser();
+    }
+
+    @Override
+    public void updateOneUser(int userId, String userName) {
+        logger.info("userId={}, userName={}", userId, userName);
+        userDao.updateByUserId(userId, userName);
+    }
+
 }

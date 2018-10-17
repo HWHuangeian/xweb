@@ -16,7 +16,12 @@
 		userName= #{userName} limit 1
 	</select>
 
-	<insert id="insertOneUser">
+	<select id="queryAllUser" resultType="User">
+		SELECT *
+		FROM user
+	</select>
+
+	<insert id="insertOneUser" parameterType="com.huangweihan.xweb.entity.User" keyProperty="userId">
 		INSERT INTO
 		user(username)
 		VALUES
@@ -36,6 +41,11 @@
 		user
 		WHERE
 		userid= #{userId}
+	</delete>
+
+	<delete id="deleteAllUser">
+		TRUNCATE table
+		user
 	</delete>
 
 </mapper>
