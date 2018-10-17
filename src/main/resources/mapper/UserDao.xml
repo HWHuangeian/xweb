@@ -16,4 +16,26 @@
 		userName= #{userName} limit 1
 	</select>
 
+	<insert id="insertOneUser">
+		INSERT INTO
+		user(username)
+		VALUES
+		(#{userName})
+	</insert>
+
+	<update id="updateByUserId">
+		UPDATE user
+		SET
+		username= #{userName}
+		WHERE
+		userid= #{userId}
+	</update>
+
+	<delete id="deleteByUserId">
+		DELETE FROM
+		user
+		WHERE
+		userid= #{userId}
+	</delete>
+
 </mapper>

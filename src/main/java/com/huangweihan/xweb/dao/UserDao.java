@@ -25,4 +25,26 @@ public interface UserDao {
      * @return
      */
     User queryByUserName(String userName);
+
+    /**
+     * 新增一个用户
+     *
+     * @param userName
+     */
+    void insertOneUser(String userName);
+
+    /**
+     * 根据用户ID删除一个用户
+     *
+     * @param userId
+     */
+    void deleteByUserId(int userId);
+
+    /**
+     * 更新一个用户的用户信息
+     *
+     * @param userId
+     * @param userName
+     */
+    void updateByUserId(int userId, String userName);
 }

@@ -42,4 +42,12 @@ public class UserController {
         return new ResultUtil<User>().setData(user);
     }
 
+    @RequestMapping("/addOneUser")
+    @ResponseBody
+    public Result<Boolean> addOneUser(String userName) {
+        logger.info("userName={}", userName);
+        userService.addOneUser(userName);
+        return new ResultUtil<Boolean>().setData(true);
+    }
+
 }

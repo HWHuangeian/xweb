@@ -36,4 +36,10 @@ public class UserServiceImpl implements UserService {
         logger.info("userId={}, userName={}", user.getUserId(), user.getUserName());
         return user;
     }
+
+    @Override
+    public void addOneUser(String userName) {
+        logger.info("userName={}", userName);
+        userDao.insertOneUser(userName);
+    }
 }

@@ -25,4 +25,11 @@ public interface UserService {
      * @return
      */
     User getUserByUserName(String userName);
+
+    /**
+     * 新增一个用户
+     *
+     * @param userName
+     */
+    void addOneUser(String userName);
 }
