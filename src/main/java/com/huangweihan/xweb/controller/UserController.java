@@ -1,8 +1,6 @@
 package com.huangweihan.xweb.controller;
 
-import com.huangweihan.xweb.core.constant.CommonConstant;
-import com.huangweihan.xweb.core.pojo.Result;
-import com.huangweihan.xweb.core.utils.ResultUtil;
+import com.huangweihan.xweb.core.pojo.ResultBean;
 import com.huangweihan.xweb.entity.User;
 import com.huangweihan.xweb.service.UserService;
 import org.slf4j.Logger;
@@ -30,54 +28,54 @@ public class UserController {
 
     @RequestMapping("/getUserByUserId")
     @ResponseBody
-    public Result<User> getUserByUserId(int userId) {
+    public ResultBean<User> getUserByUserId(int userId) {
         User user = userService.getUserByUserId(userId);
-        return new ResultUtil<User>().setData(user);
+        return new ResultBean<>(user);
     }
 
     @RequestMapping("/getUserByUserName")
     @ResponseBody
-    public Result<User> getUserByUserName(String userName) {
+    public ResultBean<User> getUserByUserName(String userName) {
         User user = userService.getUserByUserName(userName);
-        return new ResultUtil<User>().setData(user);
+        return new ResultBean<>(user);
     }
 
     @RequestMapping("/getAllUser")
     @ResponseBody
-    public Result<List<User>> getAllUser() {
+    public ResultBean<List<User>> getAllUser() {
         List<User> userList = userService.getAllUser();
-        return new ResultUtil<List<User>>().setData(userList);
+        return new ResultBean<>(userList);
     }
 
     @RequestMapping("/addOneUser")
     @ResponseBody
-    public Result<Integer> addOneUser(String userName) {
+    public ResultBean<Integer> addOneUser(String userName) {
         logger.info("userName={}", userName);
         Integer userId = userService.addOneUser(userName);
-        return new ResultUtil<Integer>().setData(userId);
+        return new ResultBean<>(userId);
     }
 
     @RequestMapping("/deleteOneUser")
     @ResponseBody
-    public Result<Boolean> deleteOneUser(int userId) {
+    public ResultBean<Boolean> deleteOneUser(int userId) {
         logger.info("userId={}", userId);
         userService.deleteByUserId(userId);
-        return new ResultUtil<Boolean>().setData(true);
+        return new ResultBean<>(true);
     }
 
     @RequestMapping("/deleteAllUser")
     @ResponseBody
-    public Result<Boolean> deleteAllUser() {
+    public ResultBean<Boolean> deleteAllUser() {
         userService.deleteAllUser();
-        return new ResultUtil<Boolean>().setData(true);
+        return new ResultBean<>(true);
     }
 
     @RequestMapping("/updateOneUser")
     @ResponseBody
-    public Result<Boolean> updateOneUser(int userId, String userName) {
+    public ResultBean<Boolean> updateOneUser(int userId, String userName) {
         logger.info("userId={}, userName={}", userId, userName);
         userService.updateOneUser(userId, userName);
-        return new ResultUtil<Boolean>().setData(true);
+        return new ResultBean<>(true);
     }
 
 }
