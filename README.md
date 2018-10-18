@@ -1,1 +1,1 @@
-# Xweb A Base SSM Project
+# Xweb a base SSM project
