@@ -1,1 +1,1 @@
-# xweb：a base SSM project with best practice
+# xweb - A Base SSM Project With Best Practice
