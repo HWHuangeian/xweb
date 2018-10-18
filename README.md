@@ -1,1 +1,1 @@
-# Xweb a base SSM project
+# xweb：a base SSM project with best practice
