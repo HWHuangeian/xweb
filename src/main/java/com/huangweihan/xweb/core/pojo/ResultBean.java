@@ -45,7 +45,7 @@ public class ResultBean<T> implements Serializable {
 	}
 
 	public static final int UNKNOWN_EXCEPTION = -99;
-	
+
 
 	/**
 	 * 返回的信息(主要出错的时候使用)
@@ -54,9 +54,9 @@ public class ResultBean<T> implements Serializable {
 
 	/**
 	 * 接口返回码, 0表示成功, 其他看对应的定义
-	 * 晓风轻推荐的做法是: 
+	 * 晓风轻推荐的做法是:
 	 * 0   : 成功
-	 * >0 : 表示已知的异常(例如提示错误等, 需要调用地方单独处理) 
+	 * >0 : 表示已知的异常(例如提示错误等, 调用方单独处理)
 	 * <0 : 表示未知的异常(不需要单独处理, 调用方统一处理)
 	 */
 	private int code = SUCCESS;

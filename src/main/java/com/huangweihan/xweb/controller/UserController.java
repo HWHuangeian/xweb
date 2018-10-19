@@ -43,16 +43,14 @@ public class UserController {
     @RequestMapping("/getAllUser")
     @ResponseBody
     public ResultBean<List<User>> getAllUser() {
-        List<User> userList = userService.getAllUser();
-        return new ResultBean<>(userList);
+        return new ResultBean<>(userService.getAllUser());
     }
 
     @RequestMapping("/addOneUser")
     @ResponseBody
     public ResultBean<Integer> addOneUser(String userName) {
         logger.info("userName={}", userName);
-        Integer userId = userService.addOneUser(userName);
-        return new ResultBean<>(userId);
+        return new ResultBean<>(userService.addOneUser(userName));
     }
 
     @RequestMapping("/deleteOneUser")
