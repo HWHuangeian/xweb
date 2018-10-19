@@ -29,15 +29,13 @@ public class UserController {
     @RequestMapping("/getUserByUserId")
     @ResponseBody
     public ResultBean<User> getUserByUserId(int userId) {
-        User user = userService.getUserByUserId(userId);
-        return new ResultBean<>(user);
+        return new ResultBean<>(userService.getUserByUserId(userId));
     }
 
     @RequestMapping("/getUserByUserName")
     @ResponseBody
     public ResultBean<User> getUserByUserName(String userName) {
-        User user = userService.getUserByUserName(userName);
-        return new ResultBean<>(user);
+        return new ResultBean<>(userService.getUserByUserName(userName));
     }
 
     @RequestMapping("/getAllUser")
