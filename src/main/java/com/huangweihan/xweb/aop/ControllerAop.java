@@ -25,7 +25,7 @@ public class ControllerAop {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
-     * 定义Pointcut，ResultBean内任意public方法执行前切入
+     * 定义Pointcut，拦截返回这个ResultBean的方法：public ResultBean<?> *(..)
      */
     @Pointcut("execution(public com.huangweihan.xweb.core.pojo.ResultBean *(..)))")
     public void aspectJMethod() {
