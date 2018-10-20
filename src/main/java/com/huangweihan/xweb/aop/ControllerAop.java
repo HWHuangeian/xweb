@@ -22,7 +22,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class ControllerAop {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    /**
+     * 日志处理器必须用static声明，防止被垃圾回收
+     */
+    private static final Logger logger = LoggerFactory.getLogger(ControllerAop.class);
 
     /**
      * 定义Pointcut，拦截返回这个ResultBean的public方法：public ResultBean<?> *(..)
