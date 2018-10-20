@@ -8,9 +8,7 @@ import java.io.Serializable;
  * @author: Administrator
  * @date: 2018/10/18 0016
  */
-public class ResultBean<T> implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class ResultBean<T> {
 
 	public static final int NO_LOGIN = -1;
 
