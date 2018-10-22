@@ -1,7 +1,5 @@
 package com.huangweihan.xweb.core.pojo;
 
-import java.io.Serializable;
-
 /**
  * Description
  *
