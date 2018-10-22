@@ -95,7 +95,7 @@ public class DateUtil {
      * 当前时间增加 interval 分钟
      *
      * @param interval 时间数
-     * @return yyyyMMddHHmm
+     * @return
      */
     public static String addMinute(int interval) {
         LocalDateTime dateTime = LocalDateTime.now();
@@ -119,7 +119,7 @@ public class DateUtil {
      *
      * @param interval +/- interval
      * @param source   源时间字符串
-     * @return yyyyMMddHHmm
+     * @return
      */
     public static String addMinute(int interval, String source) {
         LocalDateTime dateTime = parseDateTimeSource(source);
