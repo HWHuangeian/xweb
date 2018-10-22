@@ -2,6 +2,8 @@ package com.huangweihan.xweb.core.utils;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Description
@@ -186,4 +188,23 @@ public class DateUtil {
         LocalDateTime sourceDateTime = parseDateTimeSource(Source);
         return sourceDateTime.format(targetFormatter);
     }
+
+    /**
+     * 获得两个时间内的分钟集合
+     *
+     * @param startTime 起始时间
+     * @param endTime 结束时间
+     */
+    public static List<String> getTimeListByMinute(String startTime, String endTime) {
+        LocalDateTime startDateTime = parseDateTimeSource(startTime);
+        LocalDateTime endDateTime = parseDateTimeSource(endTime);
+        List<String> list = new ArrayList<>();
+        while (startDateTime.isBefore(endDateTime)) {
+            list.add(startDateTime.format(yyyyMMddHHmm));
+            startDateTime = startDateTime.plusMinutes(1);
+        }
+        list.add(endDateTime.format(yyyyMMddHHmm));
+        return list;
+    }
+
 }
