@@ -21,13 +21,13 @@ public class DateUtil {
     public static final DateTimeFormatter yyyyMMdd = DateTimeFormatter.ofPattern("yyyyMMdd");
 
     private static LocalDateTime parseDateTimeSource(String source) {
-        if (source.length() == 6) {
+        if (source.length() == 8) {
             return LocalDateTime.parse(source, yyyyMMdd);
-        } else if (source.length() == 8) {
-            return LocalDateTime.parse(source, yyyyMMddHH);
         } else if (source.length() == 10) {
-            return LocalDateTime.parse(source, yyyyMMddHHmm);
+            return LocalDateTime.parse(source, yyyyMMddHH);
         } else if (source.length() == 12) {
+            return LocalDateTime.parse(source, yyyyMMddHHmm);
+        } else if (source.length() == 14) {
             return LocalDateTime.parse(source, yyyyMMddHHmmss);
         }
         return null;
