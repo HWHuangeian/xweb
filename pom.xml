@@ -28,6 +28,7 @@
     <jstl.version>1.2</jstl.version>
     <druid.version>1.1.10</druid.version>
     <pagehelper.version>5.1.2</pagehelper.version>
+    <joda-time.version>2.9.9</joda-time.version>
   </properties>
 
   <dependencies>
@@ -213,6 +214,12 @@
       <groupId>jstl</groupId>
       <artifactId>jstl</artifactId>
       <version>${jstl.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>${joda-time.version}</version>
     </dependency>
   </dependencies>
 
