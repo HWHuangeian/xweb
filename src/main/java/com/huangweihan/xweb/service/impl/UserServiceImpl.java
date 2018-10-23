@@ -1,6 +1,5 @@
 package com.huangweihan.xweb.service.impl;
 
-import com.huangweihan.xweb.core.constant.CommonConstant;
 import com.huangweihan.xweb.dao.UserDao;
 import com.huangweihan.xweb.entity.User;
 import com.huangweihan.xweb.service.UserService;
