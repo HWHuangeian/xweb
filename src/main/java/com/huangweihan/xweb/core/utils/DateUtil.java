@@ -35,7 +35,7 @@ public class DateUtil {
         return null;
     }
 
-    private static LocalDateTime parseFrontDateTimeSource(String frontSource) {
+    private static LocalDateTime parseDateTimeSourceFromFront(String frontSource) {
         if (frontSource.length() == 10) {
             return LocalDateTime.parse(frontSource, _yyyyMMdd);
         } else if (frontSource.length() == 13) {
@@ -168,23 +168,23 @@ public class DateUtil {
     }
 
     /**
-     * 前端时间 转化为 后端时间
+     * 解析前端时间，转化为自己需要的格式
      * @param frontSource 源时间
      * @param targetFormatter 期望返回格式
      * @return
      */
     public static String formattedFromFront(String frontSource, DateTimeFormatter targetFormatter) {
-        LocalDateTime sourceDateTime = parseFrontDateTimeSource(frontSource);
+        LocalDateTime sourceDateTime = parseDateTimeSourceFromFront(frontSource);
         return sourceDateTime.format(targetFormatter);
     }
 
     /**
-     * 后端时间 转化为 前端时间
+     * 解析后端时间，转化为自己需要的格式
      * @param Source 源时间
      * @param targetFormatter 期望返回格式
      * @return
      */
-    public static String formattedToFront(String Source, DateTimeFormatter targetFormatter) {
+    public static String formattedForFront(String Source, DateTimeFormatter targetFormatter) {
         LocalDateTime sourceDateTime = parseDateTimeSource(Source);
         return sourceDateTime.format(targetFormatter);
     }
