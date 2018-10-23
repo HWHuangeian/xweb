@@ -168,7 +168,7 @@ public class DateUtil {
     }
 
     /**
-     * 解析前端时间，转化为自己需要的格式
+     * 解析前端时间，并指定返回格式
      * @param frontSource 源时间
      * @param targetFormatter 期望返回格式
      * @return
@@ -179,7 +179,7 @@ public class DateUtil {
     }
 
     /**
-     * 解析后端时间，转化为自己需要的格式
+     * 解析后端时间，并指定返回格式
      * @param Source 源时间
      * @param targetFormatter 期望返回格式
      * @return
