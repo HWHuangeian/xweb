@@ -13,6 +13,7 @@ public class Test {
     public void test() {
         getCurrentTime();
         addTime();
+        addDay();
         transfer();
         getTimeList();
     }
@@ -23,16 +24,17 @@ public class Test {
     public void getCurrentTime() {
         //获得当前日期
         String day = DateTimeUtil.getCurrentDay();
-        System.out.println(day);
+        System.out.println("获得当前日期：" + day);
         //获得当前小时
         String hour = DateTimeUtil.getCurrentHour();
-        System.out.println(hour);
+        System.out.println("获得当前小时：" + hour);
         //获得当前分钟
         String minute = DateTimeUtil.getCurrentMinute();
-        System.out.println(minute);
+        System.out.println("获得当前分钟：" + minute);
         //获得当前时间，并指定返回格式（通用模板）
-        String time = DateTimeUtil.getCurrentTime(DateTimeUtil._yyyyMMddHHmm);
-        System.out.println(time);
+        String time = DateTimeUtil.getCurrentTime(DateTimeUtil._yyyyMMddHHmm_);
+        System.out.println("获得当前时间，并指定返回格式（通用模板）：" + time);
+        System.out.println("=========================================");
     }
 
     /**
@@ -41,26 +43,43 @@ public class Test {
     public void addTime() {
         //当前时间增加5分钟
         String t = DateTimeUtil.addMinute(5);
-        System.out.println(t);
+        System.out.println("当前时间增加5分钟：" + t);
         //当前时间增加5分钟，并指定期望返回格式（通用模板）
         String t1 = DateTimeUtil.addMinute(-(24 * 60), DateTimeUtil.yyyyMMdd);
-        System.out.println(t1);
+        System.out.println("当前时间增加5分钟，并指定期望返回格式（通用模板）：" + t1);
         //指定时间增加5分钟
         String t3 = DateTimeUtil.addMinute(5, "20170821000000");
-        System.out.println(t3);
+        System.out.println("指定时间增加5分钟：" + t3);
         //指定时间增加5分钟，并指定期望返回格式（通用模板）
-        String t4 = DateTimeUtil.addMinute(5, "2017082100", DateTimeUtil._yyyyMMddHHmmss);
-        System.out.println(t4);
+        String t4 = DateTimeUtil.addMinute(5, "2017082100", DateTimeUtil._yyyyMMddHHmmss_);
+        System.out.println("指定时间增加5分钟，并指定期望返回格式（通用模板）：" + t4);
+        System.out.println("=========================================");
+    }
+
+    /**
+     * 日期增加减少
+     */
+    public void addDay() {
+        String date = DateTimeUtil.addDay(5);
+        System.out.println("当前日期增加5天：" + date);
+        String date1 = DateTimeUtil.addDay(5, DateTimeUtil._yyyyMMdd_);
+        System.out.println("当前日期增加5天，并指定期望返回格式（通用模板）：" + date1);
+        String date2 = DateTimeUtil.addDay(5, "20170821");
+        System.out.println("指定日期增加5天：" + date2);
+        String date3 = DateTimeUtil.addDay(5, "20170821", DateTimeUtil._yyyyMMdd_);
+        System.out.println("指定时间增加5天，并指定期望返回格式（通用模板）：" + date3);
+        System.out.println("=========================================");
     }
 
     /**
      * 前后端时间转化（仅支持到时钟秒，不支持日期）
      */
     public void transfer() {
-        String t1 = DateTimeUtil.formattedFromFront("2017-08-21 00", DateTimeUtil.yyyyMMddHH);
-        System.out.println(t1);
-        String t2 = DateTimeUtil.formattedForFront("2017082100", DateTimeUtil._yyyyMMddHH);
-        System.out.println(t2);
+        String t1 = DateTimeUtil.formattedDateTimeFromFront("2017-08-21 00", DateTimeUtil.yyyyMMddHH);
+        System.out.println("前端转后端：" + t1);
+        String t2 = DateTimeUtil.formattedDateTimeForFront("2017082100", DateTimeUtil._yyyyMMddHH_);
+        System.out.println("后端转前端：" + t2);
+        System.out.println("=========================================");
     }
 
     /**
@@ -68,7 +87,8 @@ public class Test {
      */
     public void getTimeList() {
         List<String> timeList = DateTimeUtil.getTimeListByMinute("201708210000", "201708210010", 1);
-        System.out.println(timeList.toString());
+        System.out.println("时间列表：" + timeList.toString());
+        System.out.println("=========================================");
     }
 
     // 十分钟开外的第一个整五分钟
