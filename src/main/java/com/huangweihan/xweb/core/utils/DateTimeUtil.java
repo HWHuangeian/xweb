@@ -11,7 +11,7 @@ import java.util.List;
  * @author: Administrator
  * @date: 2018/10/22 0022
  */
-public class DateUtil {
+public class DateTimeUtil {
 
     public static final DateTimeFormatter _yyyyMMddHHmmss = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     public static final DateTimeFormatter _yyyyMMddHHmm = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
