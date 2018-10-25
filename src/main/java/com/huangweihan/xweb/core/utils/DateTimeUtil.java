@@ -315,7 +315,9 @@ public class DateTimeUtil {
      * 获得开始时间到结束时间内的n分钟间隔的时间列表
      *
      * @param startTime 起始时间
-     * @param endTime   结束时间
+     * @param endTime   结束时间（不包括)
+     * @param interval  时间间隔
+     * @return
      */
     public static List<String> getTimeListByMinute(String startTime, String endTime, int interval) {
         LocalDateTime startDateTime = parseDateTimeSource(startTime);
@@ -331,15 +333,33 @@ public class DateTimeUtil {
     /**
      * 指定时间是否在两个时间之间
      *
-     * @param startTime
-     * @param endTime
+     * @param startDateTime
+     * @param endDateTime
      * @param target
      * @return
      */
-    public static boolean isBetween(String startTime, String endTime, String target) {
-        LocalDateTime s = parseDateTimeSource(startTime);
-        LocalDateTime e = parseDateTimeSource(endTime);
+    public static boolean isDateTimeBetween(String startDateTime, String endDateTime, String target) {
+        LocalDateTime s = parseDateTimeSource(startDateTime);
+        LocalDateTime e = parseDateTimeSource(endDateTime);
         LocalDateTime t = parseDateTimeSource(target);
+        if (t.isAfter(s) && t.isBefore(e)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 指定日期是否在两个日期之间
+     *
+     * @param startDate
+     * @param endDate
+     * @param target
+     * @return
+     */
+    public static boolean isDateBetween(String startDate, String endDate, String target) {
+        LocalDate s = parseDateSource(startDate);
+        LocalDate e = parseDateSource(endDate);
+        LocalDate t = parseDateSource(target);
         if (t.isAfter(s) && t.isBefore(e)) {
             return true;
         }

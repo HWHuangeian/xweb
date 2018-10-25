@@ -2,6 +2,8 @@ import com.huangweihan.xweb.core.utils.DateTimeUtil;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.temporal.TemporalField;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -16,6 +18,7 @@ public class Test {
         addDay();
         transfer();
         getTimeList();
+        //other();
     }
 
     /**
@@ -76,9 +79,13 @@ public class Test {
      */
     public void transfer() {
         String t1 = DateTimeUtil.formattedDateTimeFromFront("2017-08-21 00", DateTimeUtil.yyyyMMddHH);
-        System.out.println("前端转后端：" + t1);
+        System.out.println("前端DateTime转后端：" + t1);
         String t2 = DateTimeUtil.formattedDateTimeForFront("2017082100", DateTimeUtil._yyyyMMddHH_);
-        System.out.println("后端转前端：" + t2);
+        System.out.println("后端DateTime转前端：" + t2);
+        String t3 = DateTimeUtil.formattedDateFromFront("2017-08-21", DateTimeUtil.yyyyMMdd);
+        System.out.println("前端Date转后端：" + t3);
+        String t4 = DateTimeUtil.formattedDateForFront("20170821", DateTimeUtil._yyyyMMdd_);
+        System.out.println("后端Date转前端：" + t4);
         System.out.println("=========================================");
     }
 
@@ -91,6 +98,17 @@ public class Test {
         System.out.println("=========================================");
     }
 
+    public void other() {
+        String[][] arr = getTimeList("201708210000", "201708210010");
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
     // 十分钟开外的第一个整五分钟
     public String getCurrentDateMin() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmm");
@@ -101,7 +119,7 @@ public class Test {
     }
 
     //将开始时间到结束时间1min间隔的数组，并获取事件数组对应的前7天的时间值，横坐标0为当天数组，6为第7天数组
-    public String[][] getTimeList(String startTime, String endTime) {
+    public static String[][] getTimeList(String startTime, String endTime) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmm");
         Date date1 = null;
         Date date2 = null;
@@ -109,7 +127,7 @@ public class Test {
         try {
             date1 = formatter.parse(startTime);
             date2 = formatter.parse(endTime);
-            int listLength = (int)(date2.getTime() - date1.getTime()) / 600000 + 1; //计算开始和结束时间相差多少个1min
+            int listLength = (int) (date2.getTime() - date1.getTime()) / 600000 + 1; //计算开始和结束时间相差多少个1min
             result = new String[8][listLength];
         } catch (ParseException e) {
 
@@ -130,7 +148,5 @@ public class Test {
         }
         return result;
     }
-
-    // between
 
 }
