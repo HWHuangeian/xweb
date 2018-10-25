@@ -29,13 +29,15 @@ public class DateTimeUtil {
 
     /**
      * 解析后端日期字符串
+     *
      * @param source yyyy yyyyMM yyyyMMdd
      * @return
      */
     private static LocalDate parseDateSource(String source) {
         if (source.length() == 4) {
             return LocalDate.parse(source, yyyy);
-        } if (source.length() == 6) {
+        }
+        if (source.length() == 6) {
             return LocalDate.parse(source, yyyyMM);
         } else if (source.length() == 8) {
             return LocalDate.parse(source, yyyyMMdd);
@@ -45,6 +47,7 @@ public class DateTimeUtil {
 
     /**
      * 解析后端时间字符串
+     *
      * @param source yyyyMMddHH yyyyMMddHHmm yyyyMMddHHmmss
      * @return
      */
@@ -61,6 +64,7 @@ public class DateTimeUtil {
 
     /**
      * 解析前端日期字符串
+     *
      * @param frontSource MM-dd yyyy-MM yyyy-MM-dd
      * @return
      */
@@ -77,6 +81,7 @@ public class DateTimeUtil {
 
     /**
      * 解析前端时间字符串
+     *
      * @param frontSource yyyy-MM-dd HH   yyyy-MM-dd HH:mm   yyyy-MM-dd HH:mm:ss
      * @return
      */
@@ -93,6 +98,7 @@ public class DateTimeUtil {
 
     /**
      * 获得当前日期
+     *
      * @return
      */
     public static String getCurrentDay() {
@@ -103,6 +109,7 @@ public class DateTimeUtil {
 
     /**
      * 获得当前小时
+     *
      * @return
      */
     public static String getCurrentHour() {
@@ -113,6 +120,7 @@ public class DateTimeUtil {
 
     /**
      * 获得当前分钟
+     *
      * @return
      */
     public static String getCurrentMinute() {
@@ -123,6 +131,7 @@ public class DateTimeUtil {
 
     /**
      * 获得当前时间/日期（通用模板）
+     *
      * @param targetFormatter 自定义返回时间格式
      * @return
      */
@@ -182,6 +191,7 @@ public class DateTimeUtil {
 
     /**
      * 当前日期增加 interval 天
+     *
      * @param interval
      * @return
      */
@@ -255,7 +265,8 @@ public class DateTimeUtil {
 
     /**
      * 解析前端时间，并指定返回格式
-     * @param frontSource 源时间
+     *
+     * @param frontSource     源时间
      * @param targetFormatter 期望返回格式
      * @return
      */
@@ -266,7 +277,8 @@ public class DateTimeUtil {
 
     /**
      * 解析前端日期，并指定返回格式
-     * @param frontSource 源时间
+     *
+     * @param frontSource     源时间
      * @param targetFormatter 期望返回格式
      * @return
      */
@@ -277,7 +289,8 @@ public class DateTimeUtil {
 
     /**
      * 解析后端时间，并指定返回格式
-     * @param source 源时间
+     *
+     * @param source          源时间
      * @param targetFormatter 期望返回格式
      * @return
      */
@@ -288,7 +301,8 @@ public class DateTimeUtil {
 
     /**
      * 解析后端日期，并指定返回格式
-     * @param source 源时间
+     *
+     * @param source          源时间
      * @param targetFormatter 期望返回格式
      * @return
      */
@@ -301,7 +315,7 @@ public class DateTimeUtil {
      * 获得开始时间到结束时间内的n分钟间隔的时间列表
      *
      * @param startTime 起始时间
-     * @param endTime 结束时间
+     * @param endTime   结束时间
      */
     public static List<String> getTimeListByMinute(String startTime, String endTime, int interval) {
         LocalDateTime startDateTime = parseDateTimeSource(startTime);
@@ -312,6 +326,24 @@ public class DateTimeUtil {
             startDateTime = startDateTime.plusMinutes(interval);
         }
         return list;
+    }
+
+    /**
+     * 指定时间是否在两个时间之间
+     *
+     * @param startTime
+     * @param endTime
+     * @param target
+     * @return
+     */
+    public static boolean isBetween(String startTime, String endTime, String target) {
+        LocalDateTime s = parseDateTimeSource(startTime);
+        LocalDateTime e = parseDateTimeSource(endTime);
+        LocalDateTime t = parseDateTimeSource(target);
+        if (t.isAfter(s) && t.isBefore(e)) {
+            return true;
+        }
+        return false;
     }
 
 }
