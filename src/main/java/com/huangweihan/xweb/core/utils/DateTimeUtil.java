@@ -1,17 +1,22 @@
 package com.huangweihan.xweb.core.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Description
+ * 时间工具类
  *
  * @author: Administrator
  * @date: 2018/10/22 0022
  */
 public class DateTimeUtil {
+
+    private static final Logger logger = LoggerFactory.getLogger(DateTimeUtil.class);
 
     public static final DateTimeFormatter _yyyyMMddHHmmss = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     public static final DateTimeFormatter _yyyyMMddHHmm = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
