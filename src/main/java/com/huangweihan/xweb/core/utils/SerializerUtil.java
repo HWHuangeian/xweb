@@ -1,6 +1,7 @@
 package com.huangweihan.xweb.core.utils;
 
 import com.dyuproject.protostuff.LinkedBuffer;
+import com.dyuproject.protostuff.ProtobufIOUtil;
 import com.dyuproject.protostuff.ProtostuffIOUtil;
 import com.dyuproject.protostuff.Schema;
 import com.dyuproject.protostuff.runtime.RuntimeSchema;
@@ -29,7 +30,7 @@ public class SerializerUtil {
 		LinkedBuffer buffer = LinkedBuffer.allocate(1024 * 1024);
 		byte[] protostuff = null;
 		try {
-			protostuff = ProtostuffIOUtil.toByteArray(obj, schema, buffer);
+			protostuff = ProtobufIOUtil.toByteArray(obj, schema, buffer);
 		} catch (Exception e) {
 			throw new RuntimeException("序列化(" + obj.getClass() + ")对象(" + obj + ")发生异常!", e);
 		} finally {
@@ -55,7 +56,7 @@ public class SerializerUtil {
 			throw new RuntimeException("反序列化过程中依据类型创建对象失败!", e);
 		}
 		Schema<T> schema = RuntimeSchema.getSchema(targetClass);
-		ProtostuffIOUtil.mergeFrom(paramArrayOfByte, instance, schema);
+		ProtobufIOUtil.mergeFrom(paramArrayOfByte, instance, schema);
 		return instance;
 	}
 
@@ -75,7 +76,7 @@ public class SerializerUtil {
 		ByteArrayOutputStream bos = null;
 		try {
 			bos = new ByteArrayOutputStream();
-			ProtostuffIOUtil.writeListTo(bos, objList, schema, buffer);
+			ProtobufIOUtil.writeListTo(bos, objList, schema, buffer);
 			protostuff = bos.toByteArray();
 		} catch (Exception e) {
 			throw new RuntimeException("序列化对象列表(" + objList + ")发生异常!", e);
@@ -107,7 +108,7 @@ public class SerializerUtil {
 		Schema<T> schema = RuntimeSchema.getSchema(targetClass);
 		List<T> result = null;
 		try {
-			result = ProtostuffIOUtil.parseListFrom(new ByteArrayInputStream(paramArrayOfByte), schema);
+			result = ProtobufIOUtil.parseListFrom(new ByteArrayInputStream(paramArrayOfByte), schema);
 		} catch (IOException e) {
 			throw new RuntimeException("反序列化对象列表发生异常!", e);
 		}
