@@ -30,8 +30,8 @@ public class SerializerUtil {
 		LinkedBuffer buffer = LinkedBuffer.allocate(1024 * 1024);
 		byte[] protostuff = null;
 		try {
-			protostuff = ProtobufIOUtil.toByteArray(obj, schema, buffer);
-		} catch (Exception e) {
+			protostuff = ProtostuffIOUtil.toByteArray(obj, schema, buffer);
+		} catch (IllegalArgumentException e) {
 			throw new RuntimeException("序列化(" + obj.getClass() + ")对象(" + obj + ")发生异常!", e);
 		} finally {
 			buffer.clear();
@@ -56,7 +56,7 @@ public class SerializerUtil {
 			throw new RuntimeException("反序列化过程中依据类型创建对象失败!", e);
 		}
 		Schema<T> schema = RuntimeSchema.getSchema(targetClass);
-		ProtobufIOUtil.mergeFrom(paramArrayOfByte, instance, schema);
+		ProtostuffIOUtil.mergeFrom(paramArrayOfByte, instance, schema);
 		return instance;
 	}
 
@@ -76,10 +76,12 @@ public class SerializerUtil {
 		ByteArrayOutputStream bos = null;
 		try {
 			bos = new ByteArrayOutputStream();
-			ProtobufIOUtil.writeListTo(bos, objList, schema, buffer);
+			ProtostuffIOUtil.writeListTo(bos, objList, schema, buffer);
 			protostuff = bos.toByteArray();
-		} catch (Exception e) {
+		} catch (IllegalArgumentException e) {
 			throw new RuntimeException("序列化对象列表(" + objList + ")发生异常!", e);
+		} catch (IOException e) {
+			throw new RuntimeException("序列化对象列表发生异常!", e);
 		} finally {
 			buffer.clear();
 			try {
@@ -108,7 +110,7 @@ public class SerializerUtil {
 		Schema<T> schema = RuntimeSchema.getSchema(targetClass);
 		List<T> result = null;
 		try {
-			result = ProtobufIOUtil.parseListFrom(new ByteArrayInputStream(paramArrayOfByte), schema);
+			result = ProtostuffIOUtil.parseListFrom(new ByteArrayInputStream(paramArrayOfByte), schema);
 		} catch (IOException e) {
 			throw new RuntimeException("反序列化对象列表发生异常!", e);
 		}

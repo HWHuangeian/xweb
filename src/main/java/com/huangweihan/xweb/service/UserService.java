@@ -44,7 +44,7 @@ public interface UserService {
     Integer addOneUser(String userName);
 
     /**
-     *  删除一个用户
+     * 删除一个用户
      *
      * @param userId
      */
