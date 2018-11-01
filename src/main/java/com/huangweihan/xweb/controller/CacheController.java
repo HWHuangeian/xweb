@@ -21,7 +21,6 @@ public class CacheController {
     private RedisUtil redisUtil;
 
     @RequestMapping("/setCache")
-    @ResponseBody
     public ResultBean<Boolean> setCache(String key, String value) {
         User user = new User();
         user.setUserId(12);
@@ -31,7 +30,6 @@ public class CacheController {
     }
 
     @RequestMapping("/getCache")
-    @ResponseBody
     public ResultBean<User> getCache(String key) {
         User value = redisUtil.get(key, User.class);
         return new ResultBean<>(value);
