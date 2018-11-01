@@ -1,11 +1,9 @@
 package com.huangweihan.xweb.controller;
 
 import com.huangweihan.xweb.core.pojo.ResultBean;
-import com.huangweihan.xweb.core.utils.RedisCache;
-import com.huangweihan.xweb.core.utils.RedisUtil;
 import com.huangweihan.xweb.entity.User;
+import com.huangweihan.xweb.service.CacheService;
 import com.huangweihan.xweb.service.UserService;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,20 +27,25 @@ public class UserController {
     @Autowired
     private UserService userService;
     @Autowired
-    private RedisUtil redisUtil;
+    private CacheService cacheService;
 
     @RequestMapping("/setCache")
     @ResponseBody
     public ResultBean<Boolean> setCache(String key, String value) {
-        redisUtil.set(key, value);
+        //redisUtil.set(key, value);
+        User user = new User();
+        user.setUserId(12);
+        user.setUserName("HWH");
+        cacheService.cachePut(key, user);
         return new ResultBean<>(true);
     }
 
     @RequestMapping("/getCache")
     @ResponseBody
-    public ResultBean<String> getCache(String key) {
-        String value = redisUtil.get(key);
-        return new ResultBean<>(value);
+    public ResultBean<User> getCache(String key) {
+        //String value = redisUtil.get(key);
+        User user = cacheService.cacheResult(key);
+        return new ResultBean<>(user);
     }
 
     @RequestMapping("/getUserByUserId")

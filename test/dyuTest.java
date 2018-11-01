@@ -1,7 +1,3 @@
-import com.huangweihan.xweb.core.utils.RedisUtil;
-import com.huangweihan.xweb.core.utils.SerializerUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-
 /**
  * Description
  *
