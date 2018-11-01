@@ -22,7 +22,7 @@ public class CacheServiceImpl implements CacheService {
      */
     @Override
     @SuppressWarnings("unchecked")
-    public <T> T cacheResult(String key) {
+    public <T> T getCache(String key) {
         return (T) redisUtil.getDataFromCache(key);
     }
 
@@ -30,7 +30,7 @@ public class CacheServiceImpl implements CacheService {
      * 清除缓存
      */
     @Override
-    public void cacheRemove(String key) {
+    public void removeCache(String key) {
         redisUtil.clearCache(key);
     }
 
@@ -38,7 +38,7 @@ public class CacheServiceImpl implements CacheService {
      * 放入缓存
      */
     @Override
-    public <T> void cachePut(String key, T value) {
+    public <T> void setCache(String key, T value) {
         redisUtil.setDataToCache(key, value);
     }
 

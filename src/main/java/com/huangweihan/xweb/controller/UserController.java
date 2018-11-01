@@ -35,14 +35,14 @@ public class UserController {
         User user = new User();
         user.setUserId(12);
         user.setUserName("HWH");
-        cacheService.cachePut(key, user);
+        cacheService.setCache(key, user);
         return new ResultBean<>(true);
     }
 
     @RequestMapping("/getCache")
     @ResponseBody
     public ResultBean<User> getCache(String key) {
-        User user = cacheService.cacheResult(key);
+        User user = cacheService.getCache(key);
         return new ResultBean<>(user);
     }
 
