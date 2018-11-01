@@ -2,6 +2,7 @@ package com.huangweihan.xweb.controller;
 
 import com.huangweihan.xweb.core.pojo.ResultBean;
 import com.huangweihan.xweb.core.utils.RedisCache;
+import com.huangweihan.xweb.core.utils.RedisUtil;
 import com.huangweihan.xweb.entity.User;
 import com.huangweihan.xweb.service.UserService;
 import com.sun.org.apache.xpath.internal.operations.Bool;
@@ -28,19 +29,19 @@ public class UserController {
     @Autowired
     private UserService userService;
     @Autowired
-    private RedisCache redisCache;
+    private RedisUtil redisUtil;
 
     @RequestMapping("/setCache")
     @ResponseBody
     public ResultBean<Boolean> setCache(String key, String value) {
-        redisCache.putCache(key, value);
+        redisUtil.set(key, value);
         return new ResultBean<>(true);
     }
 
     @RequestMapping("/getCache")
     @ResponseBody
     public ResultBean<String> getCache(String key) {
-        String value = redisCache.getCache(key, String.class);
+        String value = redisUtil.get(key);
         return new ResultBean<>(value);
     }
 
