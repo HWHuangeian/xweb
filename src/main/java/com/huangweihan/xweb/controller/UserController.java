@@ -27,25 +27,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private RedisUtil redisUtil;
-
-    @RequestMapping("/setCache")
-    @ResponseBody
-    public ResultBean<Boolean> setCache(String key, String value) {
-        User user = new User();
-        user.setUserId(12);
-        user.setUserName(value);
-        redisUtil.set(key, user);
-        return new ResultBean<>(true);
-    }
-
-    @RequestMapping("/getCache")
-    @ResponseBody
-    public ResultBean<User> getCache(String key) {
-        User value = redisUtil.get(key, User.class);
-        return new ResultBean<>(value);
-    }
 
     @RequestMapping("/getUserByUserId")
     @ResponseBody
