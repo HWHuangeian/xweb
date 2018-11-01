@@ -23,7 +23,7 @@ public class RedisUtil {
     RedisTemplate<String, Object> template;
 
     /**
-     * 向redis添加一个键值
+     * 从redis中取出一个键值
      *
      * @param key
      * @return
@@ -34,7 +34,7 @@ public class RedisUtil {
     }
 
     /**
-     * 从redis中取出一个键值
+     * 向redis添加一个键值
      *
      * @param key
      * @param data
