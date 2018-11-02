@@ -35,7 +35,17 @@ public class RedisUtil {
     }
 
     /**
-     * get string
+     * set string with expire time
+     *
+     * @param key
+     * @param value
+     */
+    public void setWithExpire(final String key, final String value, final long expireTime) {
+        redisTemplate.opsForValue().set(key, value, expireTime);
+    }
+
+    /**
+     * get string with expire time
      *
      * @param key
      * @return
