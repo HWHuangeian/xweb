@@ -45,4 +45,5 @@ public class CacheController {
         User value = redisUtil.get(key, User.class);
         return new ResultBean<>(value);
     }
+
 }
