@@ -20,6 +20,18 @@ public class CacheController {
     @Autowired
     private RedisUtil redisUtil;
 
+    @RequestMapping("/setStringCache")
+    public ResultBean<Boolean> setStringCache(String key, String value) {
+        redisUtil.set(key, value);
+        return new ResultBean<>(true);
+    }
+
+    @RequestMapping("/getStringCache")
+    public ResultBean<String> getStringCache(String key) {
+        String value = redisUtil.get(key);
+        return new ResultBean<>(value);
+    }
+
     @RequestMapping("/setCache")
     public ResultBean<Boolean> setCache(String key, String value) {
         User user = new User();

@@ -31,6 +31,8 @@
     <joda-time.version>2.9.9</joda-time.version>
     <jedis.version>2.8.0</jedis.version>
     <spring.redis.version>1.6.4.RELEASE</spring.redis.version>
+    <protostuff.version>1.0.8</protostuff.version>
+    <guava.version>18.0</guava.version>
   </properties>
 
   <dependencies>
@@ -216,17 +218,17 @@
     <dependency>
       <groupId>com.dyuproject.protostuff</groupId>
       <artifactId>protostuff-core</artifactId>
-      <version>1.0.8</version>
+      <version>${protostuff.version}</version>
     </dependency>
     <dependency>
       <groupId>com.dyuproject.protostuff</groupId>
       <artifactId>protostuff-runtime</artifactId>
-      <version>1.0.8</version>
+      <version>${protostuff.version}</version>
     </dependency>
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>18.0</version>
+      <version>${guava.version}</version>
     </dependency>
 
     <!--mysql-->

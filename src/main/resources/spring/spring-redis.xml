@@ -96,7 +96,7 @@
 	</bean> 
 
 	<!-- redisTemplate配置，redisTemplate是Jedis对redis操作的扩展，有更多的操作，封装使操作更便捷 -->
-	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
 		<property name="connectionFactory" ref="jedisConnectionFactory" />
 		<property name="keySerializer" ref="keySerializer" />
 		<property name="valueSerializer" ref="valueSerializer" />
@@ -107,6 +107,11 @@
 	<!-- key序列化策略 -->
 	<bean id="keySerializer"  class="org.springframework.data.redis.serializer.StringRedisSerializer" />
 	<!-- value序列化策略 -->
-	<bean id="valueSerializer" class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
-	
+	<bean id="valueSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+
+	<!--定义ResultUtil-->
+	<bean id="redisUtil" class="com.huangweihan.xweb.core.utils.RedisUtil">
+		<property name="redisTemplate" ref="redisTemplate"/>
+	</bean>
+
 </beans>

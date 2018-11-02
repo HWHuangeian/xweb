@@ -1,12 +1,9 @@
 package com.huangweihan.xweb.core.utils;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.RedisZSetCommands;
 import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
-
+import org.springframework.data.redis.core.StringRedisTemplate;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -17,15 +14,37 @@ import java.util.stream.Collectors;
  * @author: Administrator
  * @date: 2018/11/1 0001
  */
-@Component
 public class RedisUtil {
 
-    private final RedisTemplate<String, String> redisTemplate;
+    private StringRedisTemplate redisTemplate;
 
-    @Autowired
-    public RedisUtil(RedisTemplate<String, String> redisTemplate) {
+    public void setRedisTemplate(StringRedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
+
+    /************************************** 字符串操作 *************************************/
+
+    /**
+     * set string
+     *
+     * @param key
+     * @param value
+     */
+    public void set(final String key, final String value) {
+        redisTemplate.opsForValue().set(key, value);
+    }
+
+    /**
+     * get string
+     *
+     * @param key
+     * @return
+     */
+    public String get(final String key) {
+        return redisTemplate.opsForValue().get(key);
+    }
+
+    /************************************** 对象操作 *************************************/
 
     /**
      * get cache
