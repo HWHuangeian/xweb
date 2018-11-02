@@ -1,7 +1,6 @@
 package com.huangweihan.xweb.controller;
 
 import com.huangweihan.xweb.core.pojo.ResultBean;
-import com.huangweihan.xweb.core.utils.RedisUtil;
 import com.huangweihan.xweb.entity.User;
 import com.huangweihan.xweb.service.UserService;
 import org.slf4j.Logger;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
