@@ -13,6 +13,14 @@ public class User implements Serializable {
     private int userId;
     private String userName;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                '}';
+    }
+
     public int getUserId() {
         return userId;
     }

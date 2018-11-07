@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class Test {
+public class DateTest {
 
     @org.junit.Test
     public void test() {
