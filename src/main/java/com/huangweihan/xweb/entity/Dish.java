@@ -53,6 +53,17 @@ public class Dish {
         return type;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "name='" + name + '\'' +
+                ", vegetarian=" + vegetarian +
+                ", calories=" + calories +
+                ", price=" + price +
+                ", type=" + type +
+                '}';
+    }
+
     public void setType(Type type) {
         this.type = type;
     }

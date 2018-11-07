@@ -139,5 +139,10 @@ public class LambdaTest {
         System.out.println("avg: " + summaryStatistics.getAverage());
         System.out.println("sum: " + summaryStatistics.getSum());
 
+        /*分组*/
+        Map<Type, List<Dish>> dishedByType = list.stream().collect(Collectors.groupingBy(Dish::getType));
+        System.out.println(dishedByType.toString());
+
+
     }
 }
