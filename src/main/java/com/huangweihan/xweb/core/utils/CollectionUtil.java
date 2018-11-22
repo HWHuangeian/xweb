@@ -21,9 +21,9 @@ public class CollectionUtil {
         return collection == null || collection.size() == 0;
     }
 
-    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map, int flag) {
+    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map, boolean flag) {
         Map<K, V> sortMap = new LinkedHashMap<>();
-        if(flag == 1) {
+        if(flag == true) {
             map.entrySet().stream()
                     .sorted((o1, o2) -> o1.getValue().compareTo(o2.getValue()))
                     .forEach(entry -> sortMap.put(entry.getKey(), entry.getValue()));
