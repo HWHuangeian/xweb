@@ -30,7 +30,7 @@ public class CollectionUtil {
      * @return
      */
      public static <K extends Comparable<? super K>, V> Map<K, V> sortedByKey(Map<K, V> map, boolean flag) {
-         return sortByKey(map, flag, Integer.MAX_VALUE);
+         return doSortedByKey(map, flag, Integer.MAX_VALUE);
      }
 
     /**
@@ -43,7 +43,7 @@ public class CollectionUtil {
      * @return
      */
      public static <K extends Comparable<? super K>, V> Map<K, V> sortedByKeyLimit(Map<K, V> map, boolean flag, int limit) {
-         return sortByKey(map, flag, limit);
+         return doSortedByKey(map, flag, limit);
      }
 
      /**
@@ -55,7 +55,7 @@ public class CollectionUtil {
       * @return
       */
      public static <K, V extends Comparable<? super V>> Map<K, V> sortedByValue(Map<K, V> map, boolean flag) {
-         return sortByValue(map, flag, Integer.MAX_VALUE);
+         return doSortedByValue(map, flag, Integer.MAX_VALUE);
      }
 
      /**
@@ -68,10 +68,10 @@ public class CollectionUtil {
       * @return
       */
      public static <K, V extends Comparable<? super V>> Map<K, V> sortedByValueLimit(Map<K, V> map, boolean flag, int limit) {
-         return sortByValue(map, flag, limit);
+         return doSortedByValue(map, flag, limit);
      }
 
-     private static <K extends Comparable<? super K>, V> Map<K, V> sortByKey(Map<K, V> map, boolean flag, int limit) {
+     private static <K extends Comparable<? super K>, V> Map<K, V> doSortedByKey(Map<K, V> map, boolean flag, int limit) {
          Map<K, V> sortMap = new LinkedHashMap<>();
          if (flag) {
              map.entrySet().stream()
@@ -87,7 +87,7 @@ public class CollectionUtil {
          return sortMap;
      }
 
-     private static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map, boolean flag, int limit) {
+     private static <K, V extends Comparable<? super V>> Map<K, V> doSortedByValue(Map<K, V> map, boolean flag, int limit) {
          Map<K, V> sortMap = new LinkedHashMap<>();
          if (flag) {
              map.entrySet().stream()
