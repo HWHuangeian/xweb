@@ -19,6 +19,6 @@ public class CollectionTest {
         map.put("3", 3);
         map.put("4", 4);
         map.put("5", 2);
-        System.out.println(CollectionUtil.sortByValue(map, false).toString());
+        System.out.println(CollectionUtil.sortedByValue(map, false).toString());
     }
 }
