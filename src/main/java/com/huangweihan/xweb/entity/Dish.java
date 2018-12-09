@@ -16,10 +16,6 @@ public class Dish {
         this.price = price;
     }
 
-    public Dish() {
-
-    }
-
     public Dish(String name, boolean vegetarian, int calories, int price, Type type) {
         this.name = name;
         this.vegetarian = vegetarian;
