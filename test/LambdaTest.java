@@ -143,6 +143,13 @@ public class LambdaTest {
         Map<Type, List<Dish>> dishedByType = list.stream().collect(Collectors.groupingBy(Dish::getType));
         System.out.println(dishedByType.toString());
 
-
+        Map<String, String> map = new HashMap<>();
+        map.put("1", "1");
+        map.put("2", "2");
+        map.put("3", "3");
+        System.out.println(map.toString());
+        Map<String, Integer> newMap = new HashMap<>();
+        map.entrySet().stream().forEach(ele -> newMap.put(ele.getKey(), Integer.parseInt(ele.getValue())));
+        System.out.println(newMap.toString());
     }
 }
