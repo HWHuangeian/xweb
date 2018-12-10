@@ -15,14 +15,14 @@
     <param-value>classpath:spring/spring-*.xml</param-value>
   </context-param>
 
-  <!--配置spring监听器-->
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
-
   <!--防止spring可能出现的内存泄露-->
   <listener>
     <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+  </listener>
+
+  <!--配置spring监听器-->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
   <!-- 配置字符编码 -->
