@@ -2,18 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huangweihan.xweb.dao.UserDao">
 
-	<select id="queryByUserId" resultType="User">
-		SELECT *
-		FROM user
-		WHERE 
-		userId= #{userId} limit 1
-	</select>
-
 	<select id="queryByUserName" resultType="User">
 		SELECT *
 		FROM user
 		WHERE
-		userName= #{userName} limit 1
+		username= #{username} limit 1
 	</select>
 
 	<select id="queryAllUser" resultType="User">
@@ -23,24 +16,16 @@
 
 	<insert id="insertOneUser" parameterType="com.huangweihan.xweb.entity.User" keyProperty="userId">
 		INSERT INTO
-		user(username)
+		user(username, password)
 		VALUES
-		(#{userName})
+		(#{username}, #{password})
 	</insert>
 
-	<update id="updateByUserId">
-		UPDATE user
-		SET
-		username= #{userName}
-		WHERE
-		userid= #{userId}
-	</update>
-
-	<delete id="deleteByUserId">
+	<delete id="deleteByUserName">
 		DELETE FROM
 		user
 		WHERE
-		userid= #{userId}
+		username= #{username}
 	</delete>
 
 	<delete id="deleteAllUser">

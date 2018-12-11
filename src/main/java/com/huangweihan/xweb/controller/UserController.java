@@ -26,16 +26,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/getUserByUserId")
-    @ResponseBody
-    public ResultBean<User> getUserByUserId(int userId) {
-        return new ResultBean<>(userService.getUserByUserId(userId));
-    }
-
     @RequestMapping("/getUserByUserName")
     @ResponseBody
-    public ResultBean<User> getUserByUserName(String userName) {
-        return new ResultBean<>(userService.getUserByUserName(userName));
+    public ResultBean<User> getUserByUserName(String username) {
+        return new ResultBean<>(userService.getUserByUserName(username));
     }
 
     @RequestMapping("/getAllUser")
@@ -46,16 +40,16 @@ public class UserController {
 
     @RequestMapping("/addOneUser")
     @ResponseBody
-    public ResultBean<Integer> addOneUser(String userName) {
-        logger.info("userName={}", userName);
-        return new ResultBean<>(userService.addOneUser(userName));
+    public ResultBean<Integer> addOneUser(String username) {
+        logger.info("username={}", username);
+        return new ResultBean<>(userService.addOneUser(username));
     }
 
     @RequestMapping("/deleteOneUser")
     @ResponseBody
-    public ResultBean<Boolean> deleteOneUser(int userId) {
-        logger.info("userId={}", userId);
-        userService.deleteByUserId(userId);
+    public ResultBean<Boolean> deleteOneUser(String username) {
+        logger.info("username={}", username);
+        userService.deleteByUserName(username);
         return new ResultBean<>(true);
     }
 
@@ -63,14 +57,6 @@ public class UserController {
     @ResponseBody
     public ResultBean<Boolean> deleteAllUser() {
         userService.deleteAllUser();
-        return new ResultBean<>(true);
-    }
-
-    @RequestMapping("/updateOneUser")
-    @ResponseBody
-    public ResultBean<Boolean> updateOneUser(int userId, String userName) {
-        logger.info("userId={}, userName={}", userId, userName);
-        userService.updateOneUser(userId, userName);
         return new ResultBean<>(true);
     }
 

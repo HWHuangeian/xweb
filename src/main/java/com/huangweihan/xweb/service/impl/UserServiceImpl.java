@@ -29,16 +29,9 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public User getUserByUserId(int userId) {
-        logger.info("userId={}", userId);
-        User user = userDao.queryByUserId(userId);
-        return user;
-    }
-
-    @Override
-    public User getUserByUserName(String userName) {
-        logger.info("userName={}", userName);
-        User user = userDao.queryByUserName(userName);
+    public User getUserByUserName(String username) {
+        logger.info("username={}", username);
+        User user = userDao.queryByUserName(username);
         return user;
     }
 
@@ -49,34 +42,28 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer addOneUser(String userName) {
-        logger.info("userName={}", userName);
-        User instance = userDao.queryByUserName(userName);
+    public Integer addOneUser(String username) {
+        logger.info("username={}", username);
+        User instance = userDao.queryByUserName(username);
         if (instance == null) {
             User user = new User();
-            user.setUserName(userName);
+            user.setUserName(username);
             userDao.insertOneUser(user);
-            return user.getUserId();
+            return user.getId();
         } else {
             return -1;
         }
     }
 
     @Override
-    public void deleteByUserId(int userId) {
-        logger.info("userId={}", userId);
-        userDao.deleteByUserId(userId);
+    public void deleteByUserName(String username) {
+        logger.info("username={}", username);
+        userDao.deleteByUserName(username);
     }
 
     @Override
     public void deleteAllUser() {
         userDao.deleteAllUser();
-    }
-
-    @Override
-    public void updateOneUser(int userId, String userName) {
-        logger.info("userId={}, userName={}", userId, userName);
-        userDao.updateByUserId(userId, userName);
     }
 
 }

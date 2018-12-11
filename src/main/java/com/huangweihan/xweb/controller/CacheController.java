@@ -34,8 +34,9 @@ public class CacheController {
     @RequestMapping("/setCache")
     public ResultBean<Boolean> setCache(String key, String value) {
         User user = new User();
-        user.setUserId(12);
+        user.setId(1);
         user.setUserName(value);
+        user.setPassword("123");
         redisUtil.set(key, user);
         return new ResultBean<>(true);
     }
