@@ -35,6 +35,8 @@
     <guava.version>18.0</guava.version>
     <javax.servlet.version>3.1.0</javax.servlet.version>
     <shiro.version>1.4.0</shiro.version>
+    <swagger2.version>2.7.0</swagger2.version>
+    <swagger-ui.version>2.7.0</swagger-ui.version>
   </properties>
 
   <dependencies>
@@ -274,6 +276,19 @@
       <groupId>org.apache.shiro</groupId>
       <artifactId>shiro-all</artifactId>
       <version>${shiro.version}</version>
+    </dependency>
+
+    <!-- Swagger2 -->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <version>${swagger2.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+      <version>${swagger-ui.version}</version>
     </dependency>
   </dependencies>
 

@@ -19,7 +19,7 @@ http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
         <!-- 身份认证失败，则跳转到登录页面的配置 -->
         <property name="loginUrl" value="/login"/>
         <!-- 登录成功之后的 跳转页面 -->
-        <property name="successUrl" value="/"/>
+        <property name="successUrl" value="/index"/>
         <!-- 权限认证失败，则跳转到指定页面 -->
         <property name="unauthorizedUrl" value="/403"/>
         <!--自定义过滤器-->
