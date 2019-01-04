@@ -37,6 +37,7 @@
     <shiro.version>1.4.0</shiro.version>
     <swagger2.version>2.7.0</swagger2.version>
     <swagger-ui.version>2.7.0</swagger-ui.version>
+    <lombok.version>1.16.20</lombok.version>
     <velocity.version>1.7</velocity.version>
     <velocity-tools.version>2.0</velocity-tools.version>
   </properties>
@@ -291,6 +292,13 @@
       <groupId>io.springfox</groupId>
       <artifactId>springfox-swagger-ui</artifactId>
       <version>${swagger-ui.version}</version>
+    </dependency>
+
+    <!-- lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
     </dependency>
 
     <!--velocity-->
