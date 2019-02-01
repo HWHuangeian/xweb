@@ -27,7 +27,7 @@ public class DateUtil {
         Date date = new Date();
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(date);
-        calendar.add(calendar.HOUR_OF_DAY, -1);
+        calendar.add(Calendar.HOUR_OF_DAY, -1);
         date = calendar.getTime();
         return formatter.format(date);
     }
@@ -38,7 +38,7 @@ public class DateUtil {
         Date date = new Date();
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(date);
-        calendar.add(calendar.HOUR_OF_DAY, 0);
+        calendar.add(Calendar.HOUR_OF_DAY, 0);
         date = calendar.getTime();
         return formatter.format(date);
     }
@@ -73,7 +73,7 @@ public class DateUtil {
         while (date.compareTo(date2) <= 0) {
             calendarYest.setTime(date);
             result[i] = formatter.format(calendarYest.getTime()); // 获取时间字符串
-            calendar.add(calendar.MINUTE, 1); // 加1min
+            calendar.add(Calendar.MINUTE, 1); // 加1min
             date = calendar.getTime();
             i++;
         }
@@ -97,7 +97,7 @@ public class DateUtil {
         Date date1 = new Date();
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(date1);
-        calendar.add(calendar.MINUTE, MIN_AGO);//
+        calendar.add(Calendar.MINUTE, MIN_AGO);//
         date1 = calendar.getTime();
         result = formatter.format(date1);
         return result;
@@ -109,7 +109,7 @@ public class DateUtil {
         return formatter.format(date);
     }
 
-    public static String getCurrentTimeFromHBase()  {
+    /*public static String getCurrentTimeFromHBase()  {
         String time = "";
         try {
             time = HBaseDao.getOneRowRecord("M3_config", "SparkProcessingTime", "t", "TranscodeTime");
@@ -121,9 +121,9 @@ public class DateUtil {
         } else {
             return getCurrentm(time, -2);
         }
-    }
+    }*/
 
-    public static String getLastDelayTimeFromHBase(String sparkProcessingName,String webProcessingName) {
+    /*public static String getLastDelayTimeFromHBase(String sparkProcessingName,String webProcessingName) {
         String time = "";
         double lastWarnTimeDelay = 0;
 
@@ -139,7 +139,7 @@ public class DateUtil {
         } else {
             return getCurrentm(time, (int) (-lastWarnTimeDelay));
         }
-    }
+    }*/
 
     public static String getDateFormatted(String date){
         SimpleDateFormat formatter1 = new SimpleDateFormat("yyyyMMdd");
@@ -394,7 +394,7 @@ public class DateUtil {
                 result[j][i] = formatter.format(calendarYest.getTime()); // 获取时间字符串
                 calendarYest.add(Calendar.DAY_OF_MONTH, -1);
             }
-            calendar.add(calendar.MINUTE, 5); // 加1min
+            calendar.add(Calendar.MINUTE, 5); // 加1min
             date = calendar.getTime();
             i++;
         }
@@ -426,7 +426,7 @@ public class DateUtil {
                 result[j][i] = formatter.format(calendarYest.getTime()); // 获取时间字符串
                 calendarYest.add(Calendar.DAY_OF_MONTH, -1);
             }
-            calendar.add(calendar.HOUR_OF_DAY, 1); // 加1小时
+            calendar.add(Calendar.HOUR_OF_DAY, 1); // 加1小时
             date = calendar.getTime();
             i++;
         }
@@ -456,7 +456,7 @@ public class DateUtil {
             result[i] = formatter.format(calendarYest.getTime()); // 获取时间字符串
 
 
-            calendar.add(calendar.MINUTE, 1); // 加1min
+            calendar.add(Calendar.MINUTE, 1); // 加1min
             date = calendar.getTime();
             i++;
         }
@@ -514,7 +514,7 @@ public class DateUtil {
         int i = 0;
         while(date.compareTo(date2)<=0){
             result[i] = formatter.format(calendar.getTime()); // 获取时间字符串
-            calendar.add(calendar.DAY_OF_MONTH, 1); // 加1天
+            calendar.add(Calendar.DAY_OF_MONTH, 1); // 加1天
             date = calendar.getTime();
             i++;
         }
@@ -568,7 +568,7 @@ public class DateUtil {
         int i = 0;
         while(date.compareTo(date2)<=0){
             result[i] = formatter.format(calendar.getTime()); // 获取时间字符串
-            calendar.add(calendar.HOUR_OF_DAY, 1); // 加1小时
+            calendar.add(Calendar.HOUR_OF_DAY, 1); // 加1小时
             date = calendar.getTime();
             i++;
         }
@@ -611,7 +611,7 @@ public class DateUtil {
         int i = 0;
         while(date.compareTo(date2)<=0){
             result[i] = formatter1.format(calendar.getTime()); // 获取时间字符串
-            calendar.add(calendar.DAY_OF_MONTH, 1); // 加1天
+            calendar.add(Calendar.DAY_OF_MONTH, 1); // 加1天
             date = calendar.getTime();
             i++;
         }
@@ -623,7 +623,7 @@ public class DateUtil {
         Date date = new Date();
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(date);
-        calendar.add(calendar.MINUTE, m+MIN_AGO);
+        calendar.add(Calendar.MINUTE, m+MIN_AGO);
         return formatter.format(calendar.getTime());
     }
 
@@ -661,7 +661,7 @@ public class DateUtil {
         }
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(date);
-        calendar.add(calendar.DATE, m);//
+        calendar.add(Calendar.DATE, m);//
         if(dateTime.length()==8){
             return formatter.format(calendar.getTime());
         }else if(dateTime.length()==10){
@@ -690,7 +690,7 @@ public class DateUtil {
         }
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(date);
-        calendar.add(calendar.MINUTE, m);
+        calendar.add(Calendar.MINUTE, m);
         if (dateTime.length() == 12) {
             return formatter.format(calendar.getTime());
         } else if (dateTime.length() == 14) {
@@ -708,7 +708,7 @@ public class DateUtil {
             Date now = new Date();
             Calendar calendar = new GregorianCalendar();
             calendar.setTime(now);
-            calendar.add(calendar.HOUR_OF_DAY, -8);//DMZ时区问题
+            calendar.add(Calendar.HOUR_OF_DAY, -8);//DMZ时区问题
             now = calendar.getTime();
             long to = now.getTime();
             mins = (int) ((to - from)/(1000 * 60));
@@ -729,7 +729,7 @@ public class DateUtil {
         return date;
     }
 
-    public static String getAppTimeByAppName(String appName) {
+    /*public static String getAppTimeByAppName(String appName) {
         String appTime = null;
 
         try (Table table = HBaseDao.getTable("M3_config")) {
@@ -742,7 +742,7 @@ public class DateUtil {
         }
 
         return appTime;
-    }
+    }*/
 
     /**
      * 判断一个时间是否包含在指定的区间内
